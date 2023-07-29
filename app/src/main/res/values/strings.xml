@@ -1,0 +1,9 @@
+<resources>
+    <string name="app_name">CWClanApp</string>
+    <string-array name="race_arr">
+        <item>T</item>
+        <item>P</item>
+        <item>Z</item>
+        <item>R</item>
+    </string-array>
+</resources>

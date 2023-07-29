@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+    <item
+        android:id="@+id/recordBtn"
+        android:icon="@drawable/baseline_view_list_24"
+        android:title="래더기록"
+        />
+    <item
+        android:id="@+id/ladderBtn"
+        android:icon="@drawable/baseline_format_list_numbered_24"
+        android:title="CW래더"
+        />
+    <item
+        android:id="@+id/homeBtn"
+        android:icon="@drawable/baseline_home_24"
+        android:title="홈"
+        />
+    <item
+        android:id="@+id/watchBtn"
+        android:icon="@drawable/baseline_play_circle_24"
+        android:title="CW튜브"
+        />
+    <item
+        android:id="@+id/mypageBtn"
+        android:icon="@drawable/baseline_person_24"
+        android:title="마이페이지"
+        />
+</menu>
