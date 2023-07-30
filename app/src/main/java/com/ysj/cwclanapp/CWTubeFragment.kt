@@ -47,6 +47,12 @@ class CWTubeFragment:Fragment(){
         binding.videoView.addItemDecoration(decoration)
         binding.videoView.layoutManager = LinearLayoutManager(mainActivity, LinearLayoutManager.VERTICAL, false)
         videoAdapter = cwTubeAdapter(vList, mainActivity)
+
+            override fun OnItemClick(position: Int, code: String) {
+                Log.d("test","aaa")
+            }
+
+        }
         mainActivity.runOnUiThread {
             binding.videoView.adapter = videoAdapter
             videoAdapter.notifyDataSetChanged()
@@ -99,7 +105,7 @@ class CWTubeFragment:Fragment(){
                                         val title = tempJson.getString("title")
                                         val img = tempJson.getJSONObject("thumbnails")
                                             .getJSONObject("default").getString("url")
-                                        Log.d("test",z.getString("videoId")+img+title)
+
                                         vList.add(
                                             videoData(
                                                 z.getString("videoId"),

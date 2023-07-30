@@ -1,6 +1,7 @@
 package com.ysj.cwclanapp
 
 import android.content.Context
+import android.util.Log
 import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
@@ -10,7 +11,7 @@ import com.ysj.cwclanapp.databinding.VideorowBinding
 class cwTubeAdapter(val data:ArrayList<videoData>, val context:Context):
     RecyclerView.Adapter<cwTubeAdapter.ViewHolder>() {
     interface OnItemClickListener{
-        fun OnItemClick(position: Int, player:userData)
+        fun OnItemClick(position: Int, code:String)
     }
 
     var itemClickListener:OnItemClickListener?=null
@@ -19,12 +20,16 @@ class cwTubeAdapter(val data:ArrayList<videoData>, val context:Context):
         init{
             binding.videoTitle.setOnClickListener {
                 //영상으로 이동
+                Log.d("test","title")
+
             }
             binding.videoThumbnail.setOnClickListener {
                 //영상으로 이동
+                Log.d("test","title")
             }
             binding.videoAuthor.setOnClickListener {
                 //해당 유튜브 / 방송국으로 이동
+                Log.d("test","title")
             }
         }
     }
