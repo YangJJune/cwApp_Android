@@ -1,6 +1,8 @@
 package com.ysj.cwclanapp
 
 import android.content.Context
+import android.content.Intent
+import android.net.Uri
 import android.util.Log
 import android.view.LayoutInflater
 import android.view.ViewGroup
@@ -18,18 +20,31 @@ class cwTubeAdapter(val data:ArrayList<videoData>, val context:Context):
 
     inner class ViewHolder(val binding: VideorowBinding):RecyclerView.ViewHolder(binding.root){
         init{
+            val activity = context as MainActivity
             binding.videoTitle.setOnClickListener {
                 //영상으로 이동
-                Log.d("test","title")
-
+                val pos = this.adapterPosition
+                val link = data[pos].link.toString()
+                val intent = Intent(Intent.ACTION_VIEW,Uri.parse(link))
+                Log.d("test",link)
+                activity.startActivity(intent)
             }
             binding.videoThumbnail.setOnClickListener {
                 //영상으로 이동
-                Log.d("test","title")
+                val pos = this.adapterPosition
+                val link = data[pos].link.toString()
+                val intent = Intent(Intent.ACTION_VIEW,Uri.parse(link))
+                activity.startActivity(intent)
             }
             binding.videoAuthor.setOnClickListener {
                 //해당 유튜브 / 방송국으로 이동
-                Log.d("test","title")
+                val author = data[this.adapterPosition].author
+                when(author){
+                    "CW동물원"->{
+                        val intent = Intent(Intent.ACTION_VIEW,Uri.parse("https://www.youtube.com/@makingsignature5609"))
+                        activity.startActivity(intent)
+                    }
+                }
             }
         }
     }

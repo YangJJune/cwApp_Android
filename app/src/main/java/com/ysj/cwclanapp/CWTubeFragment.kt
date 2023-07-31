@@ -43,11 +43,11 @@ class CWTubeFragment:Fragment(){
         return binding.root
     }
     fun initRView(){
-        val decoration = DividerItemDecoration(context, LinearLayoutManager.VERTICAL)
-        binding.videoView.addItemDecoration(decoration)
+        //val decoration = DividerItemDecoration(context, LinearLayoutManager.VERTICAL)
+        //binding.videoView.addItemDecoration(decoration)
         binding.videoView.layoutManager = LinearLayoutManager(mainActivity, LinearLayoutManager.VERTICAL, false)
         videoAdapter = cwTubeAdapter(vList, mainActivity)
-
+        videoAdapter.itemClickListener = object:cwTubeAdapter.OnItemClickListener{
             override fun OnItemClick(position: Int, code: String) {
                 Log.d("test","aaa")
             }

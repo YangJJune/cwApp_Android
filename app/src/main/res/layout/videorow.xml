@@ -3,43 +3,45 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
-    android:layout_height="wrap_content">
+    android:layout_height="wrap_content"
+    android:background="#040404"
+    android:backgroundTint="#E6E6E6">
 
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:orientation="horizontal"
+        android:orientation="vertical"
         tools:ignore="MissingConstraints">
 
         <ImageView
             android:id="@+id/videoThumbnail"
-            android:layout_width="140dp"
-            android:layout_height="80dp"
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:layout_weight="8"
+            android:paddingRight="20dp"
+            android:paddingLeft=""
+            android:layout_gravity="center_vertical"
             android:scaleType="fitXY"
             tools:srcCompat="@tools:sample/avatars" />
 
-        <LinearLayout
-            android:layout_marginTop="10dp"
-            android:layout_width="0dp"
-            android:layout_height="wrap_content"
-            android:layout_weight="1"
-            android:layout_marginRight="10dp"
-            android:layout_marginLeft="10dp"
-            android:orientation="vertical">
+
 
             <TextView
                 android:id="@+id/videoTitle"
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content"
+                android:layout_height="0dp"
                 android:text="CPL 러시드림즈 vs 쇠파이프!! 어디어디까지 길어질 수 있을까"
+                android:textColor="#000000"
+                android:layout_weight="1"
                 android:textSize="15sp" />
 
             <TextView
                 android:id="@+id/videoAuthor"
                 android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="TextView" />
-        </LinearLayout>
+                android:layout_height="0dp"
+                android:layout_weight="1"
+                android:text="TextView"
+                android:textColor="#C5C5C5" />
     </LinearLayout>
 
 </androidx.constraintlayout.widget.ConstraintLayout>
