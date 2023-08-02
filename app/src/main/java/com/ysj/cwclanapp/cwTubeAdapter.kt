@@ -44,6 +44,10 @@ class cwTubeAdapter(val data:ArrayList<videoData>, val context:Context):
                         val intent = Intent(Intent.ACTION_VIEW,Uri.parse("https://www.youtube.com/@makingsignature5609"))
                         activity.startActivity(intent)
                     }
+                    "두미★둠"->{
+                        val intent = Intent(Intent.ACTION_VIEW,Uri.parse("https://bj.afreecatv.com/taijizoom"))
+                        activity.startActivity(intent)
+                    }
                 }
             }
         }
@@ -62,6 +66,14 @@ class cwTubeAdapter(val data:ArrayList<videoData>, val context:Context):
         Glide.with(context).load(data[position].img).into(holder.binding.videoThumbnail)
         holder.binding.videoAuthor.text = data[position].author
         holder.binding.videoTitle.text = data[position].title
-
+        when(data[position].author){
+            "CW동물원"->{
+                holder.binding.imageView3.setImageResource(R.drawable.zebratube)
+            }
+            "두미★둠"->{
+                holder.binding.imageView3.setImageResource(R.drawable.tazijoom)
+            }
+        }
+        holder.binding.imageView3.clipToOutline = true
     }
 }

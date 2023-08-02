@@ -24,9 +24,11 @@
         android:id="@+id/menuView"
         android:layout_width="match_parent"
         android:layout_height="0dp"
+        android:paddingTop="10dp"
         app:itemIconTint="@color/cw"
         app:itemTextColor="@color/cw"
         app:menu="@menu/menu"
+        android:theme="@style/Widget.BottomNavigationView"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintLeft_toLeftOf="parent"
         app:layout_constraintRight_toLeftOf="parent" />

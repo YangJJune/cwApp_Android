@@ -4,44 +4,63 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
-    android:background="#040404"
-    android:backgroundTint="#E6E6E6">
+    android:layout_marginTop="10dp">
 
-    <LinearLayout
+    <ImageView
+        android:id="@+id/videoThumbnail"
         android:layout_width="match_parent"
+        android:layout_height="200dp"
+
+        android:scaleType="fitXY"
+        tools:ignore="MissingConstraints"
+        tools:srcCompat="@tools:sample/avatars" />
+
+    <ImageView
+        android:id="@+id/imageView3"
+        android:layout_width="45dp"
+        android:layout_height="45dp"
+        android:layout_marginTop="5dp"
+        android:layout_marginLeft="5dp"
+
+        android:background="@drawable/circle_image"
+        android:scaleType="centerCrop"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/videoThumbnail"
+        tools:ignore="MissingConstraints"
+        tools:srcCompat="@tools:sample/avatars" />
+
+    <TextView
+        android:id="@+id/videoTitle"
+        android:layout_width="320dp"
+        android:layout_height="25dp"
+        android:layout_marginTop="5dp"
+        android:ellipsize="end"
+        android:fontFamily="@font/nanum_b"
+        android:gravity="center"
+        android:paddingLeft="10dp"
+        android:paddingRight="10dp"
+        android:singleLine="true"
+        android:text="CPL 러시드림즈 vs 쇠파이프!! 어디어디까지 길어질 수 있을까"
+        android:textAlignment="textStart"
+        android:textColor="#000000"
+        android:textSize="14sp"
+        android:textStyle="bold"
+        app:layout_constraintStart_toEndOf="@+id/imageView3"
+        app:layout_constraintTop_toBottomOf="@+id/videoThumbnail" />
+
+    <TextView
+        android:id="@+id/videoAuthor"
+        android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:orientation="vertical"
-        tools:ignore="MissingConstraints">
-
-        <ImageView
-            android:id="@+id/videoThumbnail"
-            android:layout_width="match_parent"
-            android:layout_height="0dp"
-            android:layout_weight="8"
-            android:paddingRight="20dp"
-            android:paddingLeft=""
-            android:layout_gravity="center_vertical"
-            android:scaleType="fitXY"
-            tools:srcCompat="@tools:sample/avatars" />
-
-
-
-            <TextView
-                android:id="@+id/videoTitle"
-                android:layout_width="match_parent"
-                android:layout_height="0dp"
-                android:text="CPL 러시드림즈 vs 쇠파이프!! 어디어디까지 길어질 수 있을까"
-                android:textColor="#000000"
-                android:layout_weight="1"
-                android:textSize="15sp" />
-
-            <TextView
-                android:id="@+id/videoAuthor"
-                android:layout_width="wrap_content"
-                android:layout_height="0dp"
-                android:layout_weight="1"
-                android:text="TextView"
-                android:textColor="#C5C5C5" />
-    </LinearLayout>
+        android:layout_marginTop="1dp"
+        android:fontFamily="@font/nanum_r"
+        android:gravity="center"
+        android:paddingLeft="12dp"
+        android:text="TextView"
+        android:textAlignment="textStart"
+        android:textColor="#C5C5C5"
+        android:textSize="12sp"
+        app:layout_constraintStart_toEndOf="@+id/imageView3"
+        app:layout_constraintTop_toBottomOf="@+id/videoTitle" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>
