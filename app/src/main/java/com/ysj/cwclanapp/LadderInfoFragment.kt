@@ -43,6 +43,11 @@ class LadderInfoFragment: Fragment() {
         return binding.root
     }
 
+    override fun onResume() {
+        binding.progressBar3.visibility = View.VISIBLE
+        super.onResume()
+    }
+
     fun initRecyclerView(){
         val decoration = DividerItemDecoration(context, LinearLayoutManager.VERTICAL)
         binding.rankView.addItemDecoration(decoration)
@@ -79,6 +84,10 @@ class LadderInfoFragment: Fragment() {
             var cnt = 0
             matchData = arrayListOf()
             while(cnt<5){
+                if(i<1){
+                    binding.progressBar3.visibility = View.INVISIBLE
+                    break
+                }
                 i--
                 var str1 = ""
                 var str2 = ""
@@ -109,6 +118,7 @@ class LadderInfoFragment: Fragment() {
             recentAdapter = ladderAdapter2(matchData)
             mainActivity.runOnUiThread {
                 binding.recentView.adapter = recentAdapter
+                binding.progressBar3.visibility = View.INVISIBLE
                 recentAdapter.notifyDataSetChanged()
             }
         }

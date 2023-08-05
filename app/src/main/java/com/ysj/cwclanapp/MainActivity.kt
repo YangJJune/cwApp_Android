@@ -14,6 +14,7 @@ class MainActivity : AppCompatActivity() {
     val tubeFragment = CWTubeFragment()
     val ladderFragment = LadderFragment()
     val snsFragment = CWstargramFragment()
+    val myPageFragment = MyPageFragment()
     val recordFragment = LadderInfoFragment()
 
     override fun onKeyDown(keyCode: Int, event: KeyEvent?): Boolean {
@@ -48,7 +49,7 @@ class MainActivity : AppCompatActivity() {
                     R.id.mypageBtn->{
                         val fragment = supportFragmentManager.beginTransaction()
                         fragment.addToBackStack(null)
-                        fragment.replace(R.id.frameLayout, homeFragment)
+                        fragment.replace(R.id.frameLayout, myPageFragment)
                         fragment.commit()
                         true
 

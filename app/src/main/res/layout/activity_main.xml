@@ -17,21 +17,19 @@
         />
 
 
-
-
-
     <com.google.android.material.bottomnavigation.BottomNavigationView
         android:id="@+id/menuView"
         android:layout_width="match_parent"
         android:layout_height="0dp"
+        android:background="#FDFDFD"
         android:paddingTop="10dp"
+        android:theme="@style/Widget.BottomNavigationView"
         app:itemIconTint="@color/cw"
         app:itemTextColor="@color/cw"
-        app:menu="@menu/menu"
-        android:theme="@style/Widget.BottomNavigationView"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintLeft_toLeftOf="parent"
-        app:layout_constraintRight_toLeftOf="parent" />
+        app:layout_constraintRight_toLeftOf="parent"
+        app:menu="@menu/menu" />
 
 
 </androidx.constraintlayout.widget.ConstraintLayout>

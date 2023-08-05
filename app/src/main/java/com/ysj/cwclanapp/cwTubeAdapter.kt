@@ -26,7 +26,6 @@ class cwTubeAdapter(val data:ArrayList<videoData>, val context:Context):
                 val pos = this.adapterPosition
                 val link = data[pos].link.toString()
                 val intent = Intent(Intent.ACTION_VIEW,Uri.parse(link))
-                Log.d("test",link)
                 activity.startActivity(intent)
             }
             binding.videoThumbnail.setOnClickListener {

@@ -1,9 +1,11 @@
 <resources>
-    <string name="app_name">CWClanApp</string>
+    <string name="app_name">CW클랜</string>
     <string-array name="race_arr">
         <item>T</item>
         <item>P</item>
         <item>Z</item>
         <item>R</item>
     </string-array>
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
 </resources>

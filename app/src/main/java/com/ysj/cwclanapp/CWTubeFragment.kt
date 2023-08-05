@@ -20,6 +20,7 @@ import okhttp3.internal.wait
 import org.json.JSONArray
 import org.json.JSONObject
 import org.jsoup.Jsoup
+import org.jsoup.nodes.Document
 import java.io.IOException
 import java.net.HttpURLConnection
 import java.net.URL
@@ -46,6 +47,7 @@ class CWTubeFragment:Fragment(){
         getDoomi()
         return binding.root
     }
+
     fun initRView(){
         //val decoration = DividerItemDecoration(context, LinearLayoutManager.VERTICAL)
         //binding.videoView.addItemDecoration(decoration)
@@ -132,7 +134,6 @@ class CWTubeFragment:Fragment(){
                                             )
                                         )
                                         mainActivity.runOnUiThread { initRView() }
-
                                     }
                                 })
                             }
@@ -140,20 +141,6 @@ class CWTubeFragment:Fragment(){
                     })
                 }.await()
             }
-
-
-
-
-            /*BufferedReader(InputStreamReader(con.inputStream)).use { inp->
-                var line:String?
-                while(inp.readLine().also{
-                    line = it
-                    }!= null){
-
-                    Log.d("test",line.toString())
-                }
-
-            }*/
         }
     }
     fun getDoomi(){
@@ -205,5 +192,4 @@ class CWTubeFragment:Fragment(){
             }
         }
     }
-
 }

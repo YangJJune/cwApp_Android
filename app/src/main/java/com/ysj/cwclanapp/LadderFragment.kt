@@ -1,6 +1,7 @@
 package com.ysj.cwclanapp
 
 import android.annotation.SuppressLint
+import android.net.Uri
 import android.opengl.Visibility
 import android.os.Bundle
 import android.os.Looper
@@ -19,9 +20,11 @@ import com.google.firebase.database.ktx.database
 import com.google.firebase.database.ktx.getValue
 import com.google.firebase.database.ktx.values
 import com.google.firebase.ktx.Firebase
+import com.google.firebase.storage.ktx.storage
 import com.ysj.cwclanapp.databinding.FragmentLadderBinding
 import kotlinx.coroutines.*
 import kotlinx.coroutines.tasks.await
+import java.io.File
 import java.util.*
 import java.util.logging.Handler
 import kotlin.concurrent.timer
@@ -37,8 +40,10 @@ class LadderFragment : Fragment(){
     private var timerTask: Timer? = null
     private var isMatching = false
     private var mycancel = false
+    private var isWaitingResult = false
 
     private fun onMatch(){
+        isWaitingResult = true
         mainActivity.runOnUiThread {
             binding.startBtn.visibility = View.INVISIBLE
             binding.cancelBtn.visibility = View.INVISIBLE
@@ -58,6 +63,7 @@ class LadderFragment : Fragment(){
 
     }
     private fun offMatch(){
+        isWaitingResult = false
         mainActivity.runOnUiThread {
             binding.startBtn.visibility = View.VISIBLE
             binding.cancelBtn.visibility = View.VISIBLE
@@ -87,13 +93,17 @@ class LadderFragment : Fragment(){
 
     override fun onPause() {
         timerTask?.cancel()
-        Log.d("test","Paused!")
         isMatching = false
         super.onPause()
     }
     override fun onResume() {
         timerTask?.cancel()
-        Log.d("test","Resumed!")
+        if(isWaitingResult){
+            onMatch()
+        }
+        else{
+            offMatch()
+        }
         super.onResume()
     }
     override fun onCreateView(
@@ -104,9 +114,9 @@ class LadderFragment : Fragment(){
         binding = FragmentLadderBinding.inflate(inflater, container, false)
         mainActivity = context as MainActivity
         db = Firebase.database
-
         CoroutineScope(Dispatchers.IO).launch {
             val auth = Firebase.auth
+
             if (auth.currentUser?.isAnonymous == true) {
                 //비회원 로그인이면
                 return@launch
@@ -125,6 +135,7 @@ class LadderFragment : Fragment(){
             override fun onChildRemoved(snapshot: DataSnapshot) {
                 Log.d("test",snapshot.key.toString())
                 if(snapshot.key.toString()==name){
+                    isWaitingResult = false
                     offMatch()
                 }
             }
@@ -194,6 +205,17 @@ class LadderFragment : Fragment(){
                                 for(i in data.children){
                                     if(i.key == name){
                                         opp = i.child("opp").value.toString()
+                                        val storage = Firebase.storage
+                                        val profRef = storage.reference.child("profiles/" + opp)
+                                        val localFile = File.createTempFile("oppProfile","png")
+
+                                        profRef.getFile(localFile).addOnSuccessListener {
+                                            val imgpath = Uri.parse(localFile.absolutePath)
+                                            mainActivity.runOnUiThread {
+                                                binding.imageView2.setImageURI(imgpath)
+                                            }
+                                        }
+
                                         var tmp = db.getReference("users").get().await()
                                         opp_mmr = tmp.child(opp).value.toString()
                                         tmp = db.getReference("userRace").get().await()
@@ -244,7 +266,6 @@ class LadderFragment : Fragment(){
                 val slideDown = TranslateAnimation(0f,0f,0f,500f).apply {
                     duration = 1000
                     repeatCount = 0
-
                 }
 
                 mainActivity.runOnUiThread {
